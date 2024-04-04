@@ -1,0 +1,29 @@
+/* ======== Global Styles ======== */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a,
+span {
+  display: inline-block;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style-type: none;
+}
+/* ======== End Global Styles ======== */
