@@ -1,0 +1,25 @@
+nav .lang {
+    color: #345dcc;
+    align-items: center !important;
+  }
+  .logoimg {
+    width: 30%;
+  }
+  nav .lang i {
+    font-size: 16px;
+  }
+  nav select {
+    border: none !important;
+    color: #345dcc;
+    font-size: 17px;
+  }
+  label {
+    font-size: 17px;
+  }
+  option {
+    border: none;
+  }
+  option:hover {
+    background-color: #345dcc;
+    color: #fff;
+  }

@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    
+
+    <?php require ("components/Header.php"); ?>
+    <?php require ("components/Form.php"); ?>
     <?php require ("components/Footer.php"); ?>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>

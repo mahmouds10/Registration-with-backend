@@ -1,119 +1,102 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
-
-body {
-  font-family: "Muli", sans-serif;
-  height: 100% !important;
-  background-color: #fff !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.container-fluid {
+.footer .container-fluid {
   color: #000 !important;
 }
-.input-group-append {
+.footer .input-group-append {
   border-radius: none !important;
 }
-
-.card {
+.footer .input-group-lg > .custom-select,
+.footer .input-group-lg > .form-control:not(textarea) {
+  height: calc(40px + 8 * (100vw - 360px) / 1240) !important;
+}
+.footer input::-webkit-input-placeholder {
+  padding-left: 5px !important;
+  transform: translate3d(0, -4px, 0);
+}
+.footer input::placeholder {
+  vertical-align: middle !important;
+  font-size: calc(12px + 2 * (100vw - 360px) / 1240) !important;
+}
+.footer input:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+}
+.footer .card {
   color: #757575 !important;
   background-color: #fff !important;
   align-items: center !important;
   background: url("https://i.imgur.com/9djv5sH.jpg");
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: right calc(110px + (150 - 110) * ((100vw - 360px) / (1600 - 360))) bottom !important;
+  background-position: right calc(110px + 40 * (100vw - 360px) / 1240) bottom !important;
 }
-
-h2 {
-  font-size: calc(25px + (45 - 25) * ((100vw - 360px) / (1600 - 360))) !important;
+.footer h2 {
+  font-size: calc(25px + 20 * (100vw - 360px) / 1240) !important;
 }
-
-h5 {
-  font-size: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+.footer h5 {
+  font-size: calc(20px + 8 * (100vw - 360px) / 1240) !important;
 }
-
-.fa {
+.footer .fa {
   cursor: pointer;
   font-size: 21px;
   margin: 5px 10px 5px 10px !important;
 }
-
-button {
-  font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
-  padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-  padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
-  padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
-  padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+.footer button {
+  font-size: calc(12px + 1 * (100vw - 360px) / 1280) !important;
+  padding-left: calc(20px + 8 * (100vw - 360px) / 1240) !important;
+  padding-right: calc(20px + 8 * (100vw - 360px) / 1240) !important;
+  padding-top: calc(10px + 2 * (100vw - 360px) / 1240) !important;
+  padding-bottom: calc(10px + 2 * (100vw - 360px) / 1240) !important;
 }
-
-button:focus {
+.footer button:focus {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   outline-width: 0;
 }
-
-li {
+.footer .no-shdow {
+  box-shadow: 0 !important;
+}
+.footer li {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-input {
-  border: 2px solid green !important;
-}
-.myBtn {
+.footer .myBtn {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   height: 100%;
+  background-color: #345dcc;
+  color: white;
 }
-
-.input-group-lg > .custom-select,
-.input-group-lg > .form-control:not(textarea) {
-  height: calc(40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
+.footer .myBtn:hover {
+  background-color: #1e3982;
 }
-
-input::-webkit-input-placeholder {
-  padding-left: 5px !important;
-  transform: translate3d(0, -4px, 0);
+.footer .input-group-lg > .custom-select,
+.footer .input-group-lg > .form-control:not(textarea) {
+  height: calc(40px + 8 * (100vw - 360px) / 1240) !important;
 }
-
-input::placeholder {
-  vertical-align: middle !important;
-  font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
-}
-
-input:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  outline-width: 0;
-}
-
-img {
+.footer img {
   vertical-align: middle !important;
   width: 100%;
   height: auto;
-  width: calc(17px + 6 * ((100vw - 320px) / 680));
+  width: calc(17px + 6 * (100vw - 320px) / 680);
 }
-
-li:first-child {
+.footer li:first-child {
   font-size: 21px !important;
   font-weight: bold;
   color: #757575 !important;
 }
-
-footer {
+.footer footer {
   color: #757575 !important;
 }
-
-.social {
+.footer .social {
   position: relative;
   left: -10px;
 }
-
-.cursor-pointer {
+.footer .cursor-pointer {
   cursor: pointer !important;
-  color: green;
+  color: #345dcc;
   font-weight: bold;
-}
+}/*# sourceMappingURL=footer.css.map */
