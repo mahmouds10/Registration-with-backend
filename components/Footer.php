@@ -26,7 +26,7 @@
                                         aria-hidden="true"></i></span> <span><i class="fa fa-linkedin"
                                         aria-hidden="true"></i></span> <span><i class="fa fa-twitter"
                                         aria-hidden="true"></i></span> </p> <small
-                                class="copy-rights cursor-pointer">&#9400; 2024 FCAI-CU Development</small><br>
+                                class="copy-rights cursor-pointer">&copy; 2024 FCAI-CU Development</small><br>
                             <small>Copyright.All Rights Resered. </small>
                         </div>
                         <div

@@ -129,7 +129,7 @@
     </div>
 
 
-    <div id="side-menu" class="open position-fixed">
+    <div id="side-menu" class="open position-fixed ">
         <div class="open-icon position-absolute">
             <label for="check">
                 <input type="checkbox" value="checked" id="check" />
@@ -138,13 +138,14 @@
                 <span></span>
             </label>
         </div>
-        <div class="container-fluid min-vh-100 py-4 overflow-auto">
-            <div class="header">
+        <div class="container min-vh-100 py-4">
+            <div class="header position-relative">
                 <h2 class="text-center">Actors were also born on this day</h2>
+                <h2 class="text-center" id='thisDay'></h2>
+                <button class="position-fixed top-0" id="close">Close</button>
             </div>
 
-            <div id="actors-area" class="row flex-column">
-
+            <div id="actors-area" class="row gap-2 flex-column h-100">
 
             </div>
 
@@ -153,7 +154,8 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/validator.js"></script>
+    <script type="module" src="js/validator.js"></script>
+    <script type="module" src="js/API_Ops.js"></script>
 </body>
 
 </html>

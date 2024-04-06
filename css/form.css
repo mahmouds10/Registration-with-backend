@@ -1,14 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap");
-.form .your-journey {
-  padding-top: 30px;
-}
-.form .your-journey img {
-  width: 60%;
-}
-.form .your-journey h2,
-.form .your-journey h4 {
-  color: #345dcc;
-}
 .form .signup {
   display: flex;
   min-height: 592px;
@@ -236,7 +226,7 @@
   background: #fff;
   transition: all 0.5s;
 }
-.open .open-icon {
+.open-icon {
   border: 1px solid #000;
   border-right: none;
   width: 112px;
@@ -275,16 +265,33 @@
 .open .open-icon input[type=checkbox] {
   display: none;
 }
-.open .open-icon input[type=checkbox]:checked ~ span:nth-of-type(1) {
-  transform-origin: bottom;
-  transform: rotatez(45deg) translate(2px, -4px);
+#close{
+  border:none !important;
+  background-color:transparent !important;
 }
-.open .open-icon input[type=checkbox]:checked ~ span:nth-of-type(2) {
-  transform-origin: top;
-  transform: rotatez(-45deg);
+.loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #000;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
 }
-.open .open-icon input[type=checkbox]:checked ~ span:nth-of-type(3) {
-  transform-origin: bottom;
-  width: 50%;
-  transform: translate(22px, -1px) rotatez(45deg);
-}/*# sourceMappingURL=form.css.map */
+
+@keyframes animloader {
+  0% {
+    box-shadow: -38px -12px ,  -14px 0,  14px 0, 38px 0;
+  }
+  33% {
+    box-shadow: -38px 0px, -14px -12px,  14px 0, 38px 0;
+  }
+  66% {
+    box-shadow: -38px 0px , -14px 0, 14px -12px, 38px 0;
+  }
+  100% {
+    box-shadow: -38px 0 , -14px 0, 14px 0 , 38px -12px;
+  }
+}

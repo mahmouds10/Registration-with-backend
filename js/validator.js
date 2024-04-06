@@ -16,7 +16,7 @@ const hideRePasswordBtn = document.getElementById("eye-slash-re");
 const birthDateInput = document.getElementById("bd");
 const photoInput = document.getElementById("photo");
 const togleMenu = document.getElementById("check");
-const finalData = [];
+
 // Activate Popover
 const popoverTriggerList = document.querySelectorAll(
   '[data-bs-toggle="popover"]'
@@ -102,14 +102,18 @@ const openMenu = () => {
   document.getElementById("side-menu").style.right = "0";
   document.body.style.height = "100vh";
   document.body.style.overflow = "hidden";
+  document.getElementById("side-menu").style.overflow = "auto";
 };
 const closeMenu = () => {
   document.getElementById("layer").style.display = "none";
   document.getElementById("side-menu").style.right = "-700px";
   document.body.style.height = "";
   document.body.style.overflow = "";
+  document.getElementById("side-menu").style.overflow = "";
 };
-
+document.getElementById("close").addEventListener("click", () => {
+  closeMenu();
+});
 togleMenu.addEventListener("click", function () {
   if (togleMenu.checked) {
     openMenu();
@@ -401,3 +405,5 @@ acceptPoliciesInput.addEventListener("change", function () {
   checkBtn();
 });
 // ============================================================== //
+
+export {openMenu , birthDateInput}
