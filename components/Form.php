@@ -145,8 +145,8 @@
                 <button class="position-fixed top-0" id="close">Close</button>
             </div>
 
-            <div id="actors-area" class="row gap-2 flex-column h-100">
-
+            <div id="actors-area" class="row gap-2  flex-column h-100">
+                <h3 class="text-center my-5">Please select your birthdate and search</h3>
             </div>
 
         </div>
