@@ -1,31 +1,38 @@
 <?php
 	
+    if (session_status() == PHP_SESSION_NONE) {
+	   session_start();
+	}
+	
 	if (strtoupper($_SERVER['REQUEST_METHOD']) == "POST") {
-            $fullname = $_POST['fullname'];
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $confirmpassword = $_POST['confirmpassword'];
-            $address = $_POST['address'];
-            $phone = $_POST['phone'];
-            $birthdate = $_POST['birthdate'];
-			
-        	$Conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
+        $username = $_POST['username'];
 
-        	if (checkIfUsernameIsFound($username, $Conn)){
-        		return array("status"=>403, "response" => "username is already taked.");
-        	}
+        $_SESSION['username'] = $username;
 
-        	if ( ! createUserInDB($fullname, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate)){
-        		return array("status"=> 403, "response" => "invalid data.");
-        	}
+        $fullname = $_POST['fullname'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmpassword = $_POST['confirmpassword'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $birthdate = $_POST['birthdate'];
+		
+    	$Conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
 
-			// to upload check on image and upload it 
-            require("pages/Upload.php");
-        }
+    	if (checkIfUsernameIsFound($username, $Conn)){
+    		return array("status"=>403, "response" => "username is already taked.");
+    	}
+
+    	if ( ! createUserInDB($Conn, $fullname, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate)){
+    		return array("status"=> 403, "response" => "invalid data.");
+    	}
+
+		// to upload check on image and upload it 
+        require("pages/Upload.php");
+    }
 
 
-        // if username is found return true
+        // if username is found or null return true
         function checkIfUsernameIsFound($username, $conn){
         	if ($username == null) {
         		return true;
@@ -35,16 +42,16 @@
 
         	$sql = "SELECT `user_name` FROM userdata WHERE `user_name` = ?";
 
-    		if (mysqli_stmt_prepare($stmt, $sql)) { 
+    		if (mysqli_stmt_prepare($stmt, $sql)) {
 	    		mysqli_stmt_bind_param($stmt , "s", $username);
         		mysqli_stmt_execute($stmt);
         		$result = mysqli_stmt_get_result($stmt);
         		$row = $result->fetch_row();
         		
         		if ($row == null) {
-        			return true;
-        		}else{
         			return false;
+        		}else{
+        			return true;
         		}
         	}
 	    }
