@@ -18,7 +18,7 @@
                     <h2>Create your account</h2>
                 </div>
                 <div class="form d-flex flex-column col-9 align-items-center">
-                    <form class="col-12" action="" method="post">
+                    <form class="col-12" action="" method="post" enctype="multipart/form-data">
                         <div class="inputs col-12 gap-2 d-flex flex-column align-items-center">
                             <div class="input position-relative col-12">
                                 <label for="name">Full Name</label>
@@ -115,7 +115,7 @@
                             </h6>
                         </div>
                         <div class="signup-btn col-12 d-flex justify-content-center">
-                            <button disabled type="submit" id="signup" class="w-50">Sign Up</button>
+                            <button type="submit" id="signup" class="w-50">Sign Up</button>
                         </div>
 
                     </form>
