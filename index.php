@@ -17,6 +17,21 @@
     <?php require ("components/Header.php"); ?>
     <?php require ("components/Form.php"); ?>
     <?php require ("components/Footer.php"); ?>
+
+    <?php
+        if (strtoupper($_SERVER['REQUEST_METHOD']) == "POST") {
+            session_start();
+            $_SESSION["fullname"] = $_POST['fullname'];
+            $_SESSION["username"] = $_POST['username'];
+            $_SESSION["email"] = $_POST['email'];
+            $_SESSION["password"] = $_POST['password'];
+            $_SESSION["confirmpassword"] = $_POST['confirmpassword'];
+            $_SESSION["address"] = $_POST['address'];
+            $_SESSION["phone"] = $_POST['phone'];
+            $_SESSION["birthdate"] = $_POST['birthdate'];
+            $_SESSION["phote"] = $_POST['phote'];
+        }
+    ?>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>

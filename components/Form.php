@@ -18,7 +18,7 @@
                     <h2>Create your account</h2>
                 </div>
                 <div class="form d-flex flex-column col-9 align-items-center">
-                    <form class="col-12" action="" method="get">
+                    <form class="col-12" action="" method="post">
                         <div class="inputs col-12 gap-2 d-flex flex-column align-items-center">
                             <div class="input position-relative col-12">
                                 <label for="name">Full Name</label>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="input position-relative col-12">
                                 <label for="repass">Confirm password</label>
-                                <input type="password" name="password" id="re-pass" placeholder="Confirm your password"
+                                <input type="password" name="confirmpassword" id="re-pass" placeholder="Confirm your password"
                                     class="col-7" />
                                 <button type="button" id="eye-re"><i class="fa-solid fa-eye"></i></button>
                                 <button type="button" id="eye-slash-re">
@@ -72,8 +72,8 @@
                                 <img id="reinv-img" class="invalid-icon" src="imgs/invalid.svg" alt="">
                             </div>
                             <div class="input position-relative col-12">
-                                <label for="address">Adress</label>
-                                <input type="text" name="adress" id="address" placeholder="Enter your adress"
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="address" placeholder="Enter your adress"
                                     class="col-7" />
                                 <img id="v-address" class="valid-icon" src="imgs/download.svg" alt="" />
                                 <img id="inv-address" class="invalid-icon" src="imgs/invalid.svg" alt="" />
