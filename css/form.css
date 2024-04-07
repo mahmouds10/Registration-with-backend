@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&display=swap");
+.form .signup {
+  display: flex;
+  min-height: 592px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 0px 0;
+}
+.form .signup .header {
+  color: #345dcc;
+  font-family: "Inter", sans-serif;
+}
+.form .inputs label {
+  color: #000;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.form .inputs input {
+  width: 100%;
+  padding: 9px 10px;
+  margin: 4px 0;
+  border-radius: 6px;
+  background-color: #edf2f7;
+  border: none;
+  transition: all 0.3s;
+}
+.form input:focus {
+  outline: 1px solid #345dcc;
+  background-color: #edf2f7 !important;
+  box-shadow: 5.5px 3.5px 14px 2px #dddddd !important;
+}
+.form input::placeholder {
+  color: #7a828a !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+.form #pass::-ms-reveal,
+.form #repass::-ms-reveal,
+.form #pass::-ms-clear,
+.form #repass::-ms-clear {
+  display: none;
+}
+.form #eye,
+.form #eye-slash,
+.form #eye-re,
+.form #eye-slash-re {
+  display: none;
+  color: #45484a;
+  position: absolute;
+  background: transparent;
+  border: none;
+  left: 89%;
+}
+.form #eye,
+.form #eye-slash {
+  top: 39%;
+}
+.form #eye-re,
+.form #eye-slash-re {
+  top: 50%;
+}
+.form .inputs .policies h6 {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.form .valid {
+  outline: var(--bs-form-valid-border-color) 1px solid !important;
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.form .invalid {
+  outline: var(--bs-form-invalid-border-color) 1px solid !important;
+  padding-right: calc(1.5em + 0.75rem);
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+.form .valid-icon,
+.form .invalid-icon {
+  width: 23px;
+  position: absolute;
+  top: 50%;
+  left: 94%;
+  display: none;
+}
+.form .valid-icon-pass,
+.form .invalid-icon-pass {
+  width: 23px;
+  position: absolute;
+  top: 40%;
+  left: 94%;
+  display: none;
+}
+.form .invalid-icon-pass:hover {
+  cursor: pointer;
+}
+.form .show {
+  display: block;
+}
+.form .popover {
+  max-width: 300px;
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.form .popover-header {
+  background-color: #345dcc;
+  color: #fff;
+  border-bottom: 1px solid #23272b;
+  border-radius: 4px 4px 0 0;
+}
+.form .popover-body {
+  white-space: pre-line;
+}
+.form .popover .arrow::before {
+  border-top-color: #f8f9fa;
+}
+.form .input span,
+.form .email-exist-hint {
+  color: #718096;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+}
+.form .policies h6 {
+  color: #425466;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.form .policies span {
+  color: #425466;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+.form .policies span:hover {
+  cursor: pointer;
+}
+.form .policies input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  top: 3px;
+  background-color: #edf2f7;
+}
+.form input[type=checkbox]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form input[type=checkbox]:checked {
+  background-color: #345dcc !important;
+}
+.form .signup-btn button, .form #search {
+  display: flex;
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  color: #fcfcfd;
+  background-color: #ccc;
+  border: none;
+  border-radius: 60px;
+  transition: all 0.4s;
+  cursor: not-allowed;
+}
+.form #search {
+  box-sizing: border-box;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+.form .valid-btn {
+  background-color: #345dcc !important;
+  cursor: pointer !important;
+}
+.form .valid-btn:hover {
+  background-color: #1b4dd7 !important;
+}
+.form lord-icon {
+  position: absolute;
+  width: 170%;
+  top: 50%;
+  transition: all 0.6s;
+  opacity: 0;
+  z-index: -32;
+}
+
+.layer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  transition: all 5s;
+  top: 0;
+  display: none;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.open {
+  height: 100vh;
+  width: 700px;
+  z-index: 10;
+  right: -700px;
+  top: 0;
+  transition: all 0.5s;
+  background: #fff;
+  transition: all 0.5s;
+}
+.open-icon {
+  border: 1px solid #000;
+  border-right: none;
+  width: 112px;
+  left: -111px;
+  top: 10%;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 8px 23px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.open .open-icon label {
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  cursor: pointer;
+}
+.open .open-icon label span {
+  background: #000;
+  border-radius: 10px;
+  height: 3px;
+  margin: 3px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+.open .open-icon span:nth-of-type(1) {
+  width: 50%;
+}
+.open .open-icon span:nth-of-type(2) {
+  width: 100%;
+}
+.open .open-icon span:nth-of-type(3) {
+  width: 75%;
+}
+.open .open-icon input[type=checkbox] {
+  display: none;
+}
+#close{
+  border:none !important;
+  background-color:transparent !important;
+}
+.loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: #000;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite alternate;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: -38px -12px ,  -14px 0,  14px 0, 38px 0;
+  }
+  33% {
+    box-shadow: -38px 0px, -14px -12px,  14px 0, 38px 0;
+  }
+  66% {
+    box-shadow: -38px 0px , -14px 0, 14px -12px, 38px 0;
+  }
+  100% {
+    box-shadow: -38px 0 , -14px 0, 14px 0 , 38px -12px;
+  }
+}
