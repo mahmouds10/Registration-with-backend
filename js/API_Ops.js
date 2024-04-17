@@ -1,4 +1,4 @@
-import { openMenu , birthDateInput} from "./validator.js";
+import { openMenu, birthDateInput } from "./validator.js";
 
 const getActors = () => {
   const date = new Date(birthDateInput.value);
@@ -7,11 +7,12 @@ const getActors = () => {
   document.getElementById("thisDay").innerHTML = month + " / " + day;
 
   document.getElementById("actors-area").innerHTML = `
-    <div class="d-flex h-100 justify-content-center align-items-center">
-      <img src="./Imgs/file.svg" class="w-50" alt="">
-    </div>
-    <span class="loader"></span>
+  <div class="d-flex h-100 justify-content-center align-items-center">
+  <lottie-player src="Imgs/Animation1713352512964.json" background="transparent" speed="1"
+      style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+</div>
   `;
+
 
   openMenu();
 
@@ -33,7 +34,8 @@ const getActors = () => {
       const actorIds = response.map((item) => item.split("/")[2]);
 
       if (actorIds.length === 0) {
-        document.getElementById("actors-area").innerHTML = "No actors found for this day.";
+        document.getElementById("actors-area").innerHTML =
+          "No actors found for this day.";
         return;
       }
 
@@ -43,7 +45,8 @@ const getActors = () => {
 
       const fetchActorDetails = (index) => {
         if (index >= actorIds.length) {
-          document.getElementById("actors-area").innerHTML = actorDetails.join("");
+          document.getElementById("actors-area").innerHTML =
+            actorDetails.join("");
           return;
         }
 
@@ -57,7 +60,10 @@ const getActors = () => {
           "X-RapidAPI-Key",
           "348686b5e5mshe1b1939f9c8fdb1p1eee17jsn195fc3481d81"
         );
-        detailsRequest.setRequestHeader("X-RapidAPI-Host", "imdb8.p.rapidapi.com");
+        detailsRequest.setRequestHeader(
+          "X-RapidAPI-Host",
+          "imdb8.p.rapidapi.com"
+        );
         detailsRequest.send();
 
         detailsRequest.addEventListener("load", function () {
@@ -78,21 +84,19 @@ const getActors = () => {
           if (requestsCounter >= maxRequestsPerSecond) {
             setTimeout(() => {
               fetchActorDetails(index + 1);
-              requestsCounter = 0; 
-            }, 1000); 
+              requestsCounter = 0;
+            }, 1000);
           } else {
             fetchActorDetails(index + 1);
           }
         });
       };
 
-      fetchActorDetails(0); 
+      fetchActorDetails(0);
     }
   });
 };
 
-
 document.getElementById("search").addEventListener("click", () => {
-  
   getActors();
 });
