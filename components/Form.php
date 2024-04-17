@@ -62,8 +62,8 @@
                             </div>
                             <div class="input position-relative col-12">
                                 <label for="repass">Confirm password</label>
-                                <input type="password" name="confirmpassword" id="re-pass" placeholder="Confirm your password"
-                                    class="col-7" />
+                                <input type="password" name="confirmpassword" id="re-pass"
+                                    placeholder="Confirm your password" class="col-7" />
                                 <button type="button" id="eye-re"><i class="fa-solid fa-eye"></i></button>
                                 <button type="button" id="eye-slash-re">
                                     <i class="fa-solid fa-eye-slash"></i>
@@ -154,6 +154,7 @@
 
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script type="module" src="js/validator.js"></script>
     <script type="module" src="js/API_Ops.js"></script>
 </body>
