@@ -32,41 +32,41 @@
     }
 
 
-        // if username is found or null return true
-        function checkIfUsernameIsFound($username, $conn){
-        	if ($username == null) {
-        		return true;
-        	}
+    // if username is found or null return true
+    function checkIfUsernameIsFound($username, $conn){
+    	if ($username == null) {
+    		return true;
+    	}
 
-			$stmt = mysqli_stmt_init($conn);
+		$stmt = mysqli_stmt_init($conn);
 
-        	$sql = "SELECT `user_name` FROM userdata WHERE `user_name` = ?";
+    	$sql = "SELECT `user_name` FROM userdata WHERE `user_name` = ?";
 
-    		if (mysqli_stmt_prepare($stmt, $sql)) {
-	    		mysqli_stmt_bind_param($stmt , "s", $username);
-        		mysqli_stmt_execute($stmt);
-        		$result = mysqli_stmt_get_result($stmt);
-        		$row = $result->fetch_row();
-        		
-        		if ($row == null) {
-        			return false;
-        		}else{
-        			return true;
-        		}
-        	}
-	    }
+		if (mysqli_stmt_prepare($stmt, $sql)) {
+    		mysqli_stmt_bind_param($stmt , "s", $username);
+    		mysqli_stmt_execute($stmt);
+    		$result = mysqli_stmt_get_result($stmt);
+    		$row = $result->fetch_row();
+    		
+    		if ($row == null) {
+    			return false;
+    		}else{
+    			return true;
+    		}
+    	}
+    }
 
-        function createUserInDB($Conn, $name, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate){
+    function createUserInDB($Conn, $name, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate){
 
-		    $stmt = mysqli_stmt_init($Conn);
+	    $stmt = mysqli_stmt_init($Conn);
 
-        	$sql = "INSERT INTO `userdata` (`full_name`, `user_name`, `birthdate`, `phone`, `address`, `password`, `confirm_password`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";		    
+    	$sql = "INSERT INTO `userdata` (`full_name`, `user_name`, `birthdate`, `phone`, `address`, `password`, `confirm_password`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";		    
 
-    		if (mysqli_stmt_prepare($stmt,$sql)) { 
-        		mysqli_stmt_bind_param($stmt , "ssssssss", $name, $username, $birthdate, $phone, $address, $password, $confirmpassword, $email);
-        		mysqli_stmt_execute($stmt);
-        		return true;
-        	}else{
-        		return false;
-        	}
-        }
+		if (mysqli_stmt_prepare($stmt,$sql)) { 
+    		mysqli_stmt_bind_param($stmt , "ssssssss", $name, $username, $birthdate, $phone, $address, $password, $confirmpassword, $email);
+    		mysqli_stmt_execute($stmt);
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
