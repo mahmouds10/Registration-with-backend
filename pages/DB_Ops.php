@@ -1,5 +1,9 @@
 <?php
 	
+    require("userNameCheck.php");
+
+    error_reporting(E_ERROR | E_PARSE);
+    
     if (session_status() == PHP_SESSION_NONE) {
 	   session_start();
 	}
@@ -18,42 +22,23 @@
         $birthdate = $_POST['birthdate'];
 		
     	$Conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
+    
+        // to return json file response
+        header('Content-Type: application/json; charset=utf-8');
+
 
     	if (checkIfUsernameIsFound($username, $Conn)){
-    		return array("status"=>403, "response" => "username is already taked.");
+    		return json_encode(array("status"=>403, "response" => "username is already taked."));
     	}
 
     	if ( ! createUserInDB($Conn, $fullname, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate)){
-    		return array("status"=> 403, "response" => "invalid data.");
+    		return json_encode(array("status"=> 403, "response" => "invalid data."));
     	}
 
 		// to upload check on image and upload it 
-        require("pages/Upload.php");
-    }
+        require("pages\Upload.php");
 
-
-    // if username is found or null return true
-    function checkIfUsernameIsFound($username, $conn){
-    	if ($username == null) {
-    		return true;
-    	}
-
-		$stmt = mysqli_stmt_init($conn);
-
-    	$sql = "SELECT `user_name` FROM userdata WHERE `user_name` = ?";
-
-		if (mysqli_stmt_prepare($stmt, $sql)) {
-    		mysqli_stmt_bind_param($stmt , "s", $username);
-    		mysqli_stmt_execute($stmt);
-    		$result = mysqli_stmt_get_result($stmt);
-    		$row = $result->fetch_row();
-    		
-    		if ($row == null) {
-    			return false;
-    		}else{
-    			return true;
-    		}
-    	}
+        return json_encode(array("status"=> 201, "response" => "user created successfully."));
     }
 
     function createUserInDB($Conn, $name, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate){
