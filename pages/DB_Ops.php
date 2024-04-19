@@ -1,57 +1,85 @@
 <?php
 	
-    require("userNameCheck.php");
 
-    error_reporting(E_ERROR | E_PARSE);
-    
-    if (session_status() == PHP_SESSION_NONE) {
-	   session_start();
-	}
-	
-	if (strtoupper($_SERVER['REQUEST_METHOD']) == "POST") {
-        $username = $_POST['username'];
+    // to connect to database and create sql
+    // AffectedRowOrResult is param that define what user need affected rows or the result  
+    function executeQueryOnDataBase($sql, $params, $AffectedRowOrResult = 2){
+        mysqli_report(MYSQLI_REPORT_OFF);
+        $conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
+        $stmt = mysqli_stmt_init($conn);
 
-        $_SESSION['username'] = $username;
+        if (! $stmt){
+            echo "Something happen error" . "<br>";
+            exit();
+        }
 
-        $fullname = $_POST['fullname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirmpassword = $_POST['confirmpassword'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $birthdate = $_POST['birthdate'];
-		
-    	$Conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
-    
-        // to return json file response
-        header('Content-Type: application/json; charset=utf-8');
+        if (mysqli_stmt_prepare($stmt,$sql)) { 
+            try{
+                mysqli_stmt_execute($stmt, $params);
+            }
+            catch(Exception $e){
+                echo "error while execution " . "<br>";
+                exit();
+            }
 
-
-    	if (checkIfUsernameIsFound($username, $Conn)){
-    		return json_encode(array("status"=>403, "response" => "username is already taked."));
-    	}
-
-    	if ( ! createUserInDB($Conn, $fullname, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate)){
-    		return json_encode(array("status"=> 403, "response" => "invalid data."));
-    	}
-
-		// to upload check on image and upload it 
-        require("pages\Upload.php");
-
-        return json_encode(array("status"=> 201, "response" => "user created successfully."));
+            if ($AffectedRowOrResult == 2) {
+                $result = mysqli_stmt_get_result($stmt);
+                return $result;
+            }
+            else if ($AffectedRowOrResult == 1) {
+                return mysqli_affected_rows($conn);
+            }
+        }
+        else{
+            echo "Sql Query is wrong, please type write one";
+        }
     }
 
-    function createUserInDB($Conn, $name, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate){
 
-	    $stmt = mysqli_stmt_init($Conn);
+    function createUserInDB($name, $username, $email, $password, $confirmpassword, $address, $phone, $birthdate){
 
     	$sql = "INSERT INTO `userdata` (`full_name`, `user_name`, `birthdate`, `phone`, `address`, `password`, `confirm_password`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";		    
 
-		if (mysqli_stmt_prepare($stmt,$sql)) { 
-    		mysqli_stmt_bind_param($stmt , "ssssssss", $name, $username, $birthdate, $phone, $address, $password, $confirmpassword, $email);
-    		mysqli_stmt_execute($stmt);
-    		return true;
-    	}else{
-    		return false;
-    	}
+        $affectedRows = executeQueryOnDataBase($sql, array($name, $username, $birthdate, $phone, $address, $password, $confirmpassword, $email), 1);
+
+        if ($affectedRows > 0) {
+            return true;
+        }
+        return false;
     }
+
+
+    // if username is found in database or null return true
+    function checkIfUsernameIsFound($username, $conn = null){
+        if ($username == null) {
+            return true;
+        }
+
+        $sql = "SELECT `user_name` FROM userdata WHERE `user_name` = ?";
+
+        $result = executeQueryOnDataBase($sql, array($username));
+
+        if ($result->fetch_row() == null) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+    function setUserImage($image, $username){
+
+        $conn = mysqli_connect("localhost", "root", "", "webassignment_1") or die("Could not connect: " . mysqli_error($conn));
+
+        $stmt = mysqli_stmt_init($conn);
+
+        $sql = "UPDATE `userdata` SET `user_image` = ? WHERE `user_name` = ?";
+
+        $affectedRows = executeQueryOnDataBase($sql, array($image["name"], $username), 1);
+
+        if ($affectedRows > 0) {
+            return true;
+        }
+        return false;
+    }
+
