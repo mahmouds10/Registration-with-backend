@@ -115,7 +115,7 @@
                             </h6>
                         </div>
                         <div class="signup-btn col-12 d-flex justify-content-center">
-                            <button type="submit" id="signup" class="w-50">Sign Up</button>
+                            <button type="button" id="signup" class="w-50">Sign Up</button>
                         </div>
 
                     </form>
@@ -142,7 +142,9 @@
             <div class="header position-relative">
                 <h2 class="text-center">Actors were also born on this day</h2>
                 <h2 class="text-center" id='thisDay'></h2>
-                <button class="position-fixed top-0" id="close">Close</button>
+                <button class="position-fixed top-0" id="close">
+                    <i class="fa-regular fa-circle-xmark closeBtn"></i>
+                </button>
             </div>
 
             <div id="actors-area" class="row gap-2  flex-column h-100">

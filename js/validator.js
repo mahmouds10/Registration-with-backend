@@ -22,32 +22,6 @@ const popoverTriggerList = document.querySelectorAll(
   '[data-bs-toggle="popover"]'
 );
 
-// Clear the form
-function clearForm() {
-  nameInput.value = "";
-  mailInput.value = "";
-  passwordInput.value = "";
-  acceptPoliciesInput.checked = false;
-
-  nameInput.classList.remove("valid");
-  nameInput.classList.remove("invalid");
-  document.getElementById("v-name").classList.remove("show");
-  document.getElementById("inv-name").classList.remove("show");
-
-  mailInput.classList.remove("valid");
-  mailInput.classList.remove("invalid");
-  document.getElementById("v-mail").classList.remove("show");
-  document.getElementById("inv-mail").classList.remove("show");
-
-  passwordInput.classList.remove("valid");
-  passwordInput.classList.remove("invalid");
-  document.getElementById("v-img").classList.remove("show");
-  document.getElementById("inv-img").classList.remove("show");
-  showPasswordBtn.style.display = "none";
-  hidePasswordBtn.style.display = "none";
-  passwordInput.type = "password";
-  signUpbtn.classList.remove("valid-btn");
-}
 
 // Toggle Password:-
 passwordInput.addEventListener("keyup", function () {
@@ -316,7 +290,7 @@ function checkPhone() {
 phoneInput.addEventListener("keyup", checkPhone);
 phoneInput.addEventListener("blur", checkPhone);
 
-// Validate Phone
+// Validate userName
 function validateUserName() {
   if (userNameInput.value === "") {
     userNameInput.classList.remove("valid");
@@ -403,4 +377,4 @@ acceptPoliciesInput.addEventListener("change", function () {
 });
 // ============================================================== //
 
-export {openMenu , birthDateInput}
+export {openMenu , birthDateInput , signUpbtn ,userNameInput}

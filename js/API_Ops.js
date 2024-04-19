@@ -1,4 +1,31 @@
-import { openMenu, birthDateInput } from "./validator.js";
+import { openMenu, birthDateInput, signUpbtn, userNameInput } from "./validator.js";
+
+// Clear the form
+function clearForm() {
+  nameInput.value = "";
+  mailInput.value = "";
+  passwordInput.value = "";
+  acceptPoliciesInput.checked = false;
+
+  nameInput.classList.remove("valid");
+  nameInput.classList.remove("invalid");
+  document.getElementById("v-name").classList.remove("show");
+  document.getElementById("inv-name").classList.remove("show");
+
+  mailInput.classList.remove("valid");
+  mailInput.classList.remove("invalid");
+  document.getElementById("v-mail").classList.remove("show");
+  document.getElementById("inv-mail").classList.remove("show");
+
+  passwordInput.classList.remove("valid");
+  passwordInput.classList.remove("invalid");
+  document.getElementById("v-img").classList.remove("show");
+  document.getElementById("inv-img").classList.remove("show");
+  showPasswordBtn.style.display = "none";
+  hidePasswordBtn.style.display = "none";
+  passwordInput.type = "password";
+  signUpbtn.classList.remove("valid-btn");
+}
 
 const getActors = () => {
   const date = new Date(birthDateInput.value);
@@ -12,7 +39,6 @@ const getActors = () => {
       style="width: 300px; height: 300px;" loop autoplay></lottie-player>
 </div>
   `;
-
 
   openMenu();
 
@@ -44,7 +70,7 @@ const getActors = () => {
       let requestsCounter = 0;
 
       const fetchActorDetails = (index) => {
-        if (index >= actorIds.length) {
+        if (index >= 10) {
           document.getElementById("actors-area").innerHTML =
             actorDetails.join("");
           return;
@@ -96,6 +122,76 @@ const getActors = () => {
     }
   });
 };
+
+const createUser = () => {
+  const username = document.getElementById('username').value;
+  const fullname = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const address = document.getElementById('address').value;
+  const password = document.getElementById('pass').value;
+  const confirmpassword = document.getElementById('re-pass').value;
+  const phone = document.getElementById('phone').value;
+  const birthdate = document.getElementById('bd').value;
+  const photoInput = document.getElementById("photo");
+  const file = photoInput.files[0];
+  const myHeaders = new Headers();
+  myHeaders.append("Cookie", "PHPSESSID=1p76u7oc2jvhqemn3ad9tavkc6");
+
+  const formdata = new FormData();
+  formdata.append("username", username);
+  formdata.append("fullname", fullname);
+  formdata.append("address", address);
+  formdata.append("birthdate", birthDateInput);
+  formdata.append("email", email);
+  formdata.append("password", password);
+  formdata.append("confirmpassword", confirmpassword);
+  formdata.append("phone", phone);
+  formdata.append("birthdate", birthdate);
+  formdata.append("photo", file); 
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: formdata,
+    redirect: "follow",
+  };
+
+  fetch(
+    "http://localhost/Projects/assignment/pages/createUserController.php",
+    requestOptions
+  )
+    .then((response) => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw new Error("Error uploading file");
+      }
+    })
+    .then((result) => {
+      const finalResult = JSON.parse(result)
+      if(finalResult.status == 403){
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "The user name is alredy taken. Try another one!",
+      })
+      }
+      else{
+        Swal.fire({
+          icon: "success",
+          title: "Done",
+          text: "Your account has been created.",
+        }).then(() => {
+          clearForm();
+        })
+
+      }
+    })
+    
+};
+signUpbtn.addEventListener("click", () => {
+  createUser();
+});
 
 document.getElementById("search").addEventListener("click", () => {
   getActors();
