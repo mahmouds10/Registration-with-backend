@@ -66,11 +66,11 @@
             echo json_encode(array("status"=> 403,  "response"=>"invalid image."));
         }
 
-        else if(! setUserImage($image, $username)){
-            echo json_encode(array("status"=> 500,  "response"=>"error while editing image."));
-        }else{
+        else if(setUserImage($image, $username)){
             $destination = "../uploadedImages/" . $image["name"];
             copy($image["tmp_name"], $destination);
+        }else{
+            echo json_encode(array("status"=> 500,  "response"=>"error while editing image."));
         }
         exit();
     }

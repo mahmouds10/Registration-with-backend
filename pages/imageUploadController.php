@@ -7,17 +7,13 @@
 
     error_reporting(E_ERROR | E_PARSE);
     
-    if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-    }
-
-    $username = $_SESSION['username'];
-    $image = $_FILES['photo'];
-
+    
     if (strtoupper($_SERVER['REQUEST_METHOD']) == "POST") {
         $username = $_POST["username"];
+        $image = $_FILES['photo'];
 
         if (! $username) {
+
             if (!$username) {
                 echo json_encode(array("status"=> 403,  "response"=>"must provide username."));
             }
@@ -38,5 +34,8 @@
             echo json_encode(array("status"=> 500,  "response"=>"error while editing image."));
         }
         exit();
+    }
+    else{
+        echo json_encode(array("status"=> 405,  "response"=>"not allowed any method else post."));
     }
 
